@@ -1,0 +1,17 @@
+<%unless (comment.archived? || comment.private?)%>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+  <p>
+<%=link_to 'Destroy Comment', [comment.article, comment],
+ method: :delete,
+ date: {confirm: "Are you sure?"}%> 
+</p>
+<%end%>
+
