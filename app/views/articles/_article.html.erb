@@ -1,0 +1,5 @@
+ <% unless article.archived? || article.private? %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
