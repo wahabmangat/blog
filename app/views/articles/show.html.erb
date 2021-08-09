@@ -1,7 +1,14 @@
 <h1><%= @article.title %></h1>
 
 <p><%= @article.body %></p>
-
+<% if flash[:alert] %>
+    <div class="alert alert-success alert-dismissible toggle" role="alert"> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+         <%= flash[:alert] %>
+      </div>
+<% end %>
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Destroy", article_path(@article),
@@ -10,6 +17,7 @@
  <li> <%= link_to "Back to root", root_path%> </li>
 </ul>
 <h2>Comments</h2>
-<%= render  @article.comments %>
-<h2>Add a comment:</h2>
+<%= render @article.comments %>
+<%#= render partial: "comment", collection: @comments, as: :commentt %>
+<h2>Add a comment: </h2>
 <%= render 'comments/form' %>
